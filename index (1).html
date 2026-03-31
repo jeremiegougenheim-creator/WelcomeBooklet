@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Villa Dar J · Marrakech — Guide des Invités</title>
+<style>
+  :root {
+    --ocre: #C8853A;
+    --ocre-light: #E8B97A;
+    --ocre-pale: #F5E6D0;
+    --terra: #B85C38;
+    --vert: #3D6B4F;
+    --vert-light: #5A8A6A;
+    --creme: #F9F4EE;
+    --creme-dark: #EFE6D8;
+    --brun: #3A2A1E;
+    --brun-mid: #6B4E35;
+    --sable: #D4B896;
+    --blanc: #FDFAF6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: -apple-system, 'Segoe UI', Arial, sans-serif;
+    background: var(--blanc);
+    color: var(--brun);
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(58,42,30,0.97);
+    backdrop-filter: blur(8px);
+    padding: 0 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+    border-bottom: 1px solid rgba(200,133,58,0.2);
+  }
+  .nav-brand {
+    font-family: Georgia, serif;
+    font-size: 17px; color: var(--ocre-light);
+    font-style: italic; letter-spacing: 0.5px;
+  }
+  .nav-links {
+    display: flex; gap: 4px;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-link {
+    color: var(--sable); font-size: 12px; font-weight: 500;
+    letter-spacing: 0.5px; text-transform: uppercase;
+    padding: 6px 10px; border-radius: 4px;
+    text-decoration: none; white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .nav-link:hover, .nav-link.active { background: rgba(200,133,58,0.15); color: var(--ocre-light); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--brun);
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    position: relative; overflow: hidden;
+    padding: 0 24px 60px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(200,133,58,0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 70%, rgba(61,107,79,0.15) 0%, transparent 55%),
+      radial-gradient(ellipse at 60% 10%, rgba(184,92,56,0.12) 0%, transparent 45%);
+  }
+  .hero-pattern {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: repeating-linear-gradient(
+      45deg, var(--ocre) 0, var(--ocre) 1px, transparent 0, transparent 50%
+    );
+    background-size: 20px 20px;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 600px; }
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--ocre-light); margin-bottom: 16px; opacity: 0.8;
+  }
+  .hero-title {
+    font-family: Georgia, serif;
+    font-size: clamp(52px, 12vw, 80px);
+    font-weight: 300; color: var(--creme);
+    line-height: 1.0; margin-bottom: 8px;
+  }
+  .hero-title span { color: var(--ocre-light); }
+  .hero-subtitle {
+    font-family: Georgia, serif; font-style: italic;
+    font-size: 20px; color: var(--sable);
+    margin-bottom: 32px;
+  }
+  .hero-divider {
+    width: 60px; height: 1px;
+    background: linear-gradient(90deg, var(--ocre), transparent);
+    margin-bottom: 20px;
+  }
+  .hero-tagline {
+    font-size: 13px; color: var(--sable); opacity: 0.6;
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+
+  /* SVG star */
+  .hero-star {
+    width: 80px; height: 80px;
+    margin-bottom: 28px; opacity: 0.5;
+  }
+
+  /* ── SCROLL INDICATOR ── */
+  .scroll-hint {
+    position: absolute; bottom: 24px; right: 24px; z-index: 2;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    color: var(--sable); opacity: 0.4; font-size: 10px; letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .scroll-hint::before {
+    content: '';
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, transparent, var(--sable));
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 60px 24px;
+    max-width: 720px; margin: 0 auto;
+  }
+  section.full { max-width: 100%; padding: 60px 0; }
+
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--ocre);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: Georgia, serif;
+    font-size: clamp(28px, 5vw, 38px);
+    font-weight: 300; color: var(--brun);
+    line-height: 1.15; margin-bottom: 24px;
+  }
+  .section-divider {
+    width: 40px; height: 2px;
+    background: var(--ocre); margin-bottom: 28px;
+  }
+
+  /* ── WELCOME BAND ── */
+  .welcome-band {
+    background: var(--brun); padding: 48px 24px;
+  }
+  .welcome-inner { max-width: 640px; margin: 0 auto; text-align: center; }
+  .welcome-quote {
+    font-family: Georgia, serif; font-style: italic;
+    font-size: clamp(17px, 3vw, 21px);
+    color: var(--sable); line-height: 1.8; margin-bottom: 24px;
+  }
+  .welcome-name {
+    font-family: Georgia, serif; font-size: 20px;
+    color: var(--ocre-light);
+  }
+  .welcome-guest-name {
+    font-size: 13px; color: var(--sable); opacity: 0.5;
+    letter-spacing: 1px; margin-bottom: 16px;
+  }
+
+  /* ── CARDS ── */
+  .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 500px) { .cards-grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--creme); border-radius: 10px;
+    padding: 20px 22px;
+  }
+  .card-title {
+    font-family: Georgia, serif; font-size: 17px;
+    font-weight: 600; color: var(--brun); margin-bottom: 8px;
+  }
+  .card-body { font-size: 14px; color: var(--brun-mid); line-height: 1.6; }
+  .card.ocre  { border-top: 3px solid var(--ocre); }
+  .card.vert  { border-top: 3px solid var(--vert); }
+  .card.terra { border-top: 3px solid var(--terra); }
+  .card.brun  { border-top: 3px solid var(--brun-mid); }
+
+  /* ── WIFI BOX ── */
+  .wifi-box {
+    background: var(--vert); border-radius: 12px;
+    padding: 22px 24px; margin-bottom: 28px;
+    display: flex; gap: 24px; align-items: center;
+    flex-wrap: wrap;
+  }
+  .wifi-item-label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.65); margin-bottom: 4px;
+  }
+  .wifi-item-value { font-size: 20px; font-weight: 700; color: white; }
+  .wifi-sep { width: 1px; background: rgba(255,255,255,0.2); align-self: stretch; }
+
+  /* ── CONTACT CARDS ── */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 500px) { .contact-grid { grid-template-columns: 1fr; } }
+
+  .contact-card {
+    background: var(--brun); border-radius: 12px;
+    padding: 22px 24px;
+  }
+  .contact-name {
+    font-family: Georgia, serif; font-size: 22px;
+    color: var(--ocre-light); margin-bottom: 6px;
+  }
+  .contact-tel { font-size: 16px; color: var(--sable); margin-bottom: 4px; }
+  .contact-sub { font-size: 13px; color: var(--sable); opacity: 0.6; }
+  .contact-btn {
+    display: inline-block; margin-top: 14px;
+    background: rgba(200,133,58,0.18); border: 1px solid rgba(200,133,58,0.4);
+    color: var(--ocre-light); border-radius: 6px;
+    padding: 8px 16px; font-size: 13px; font-weight: 600;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .contact-btn:hover { background: rgba(200,133,58,0.3); }
+
+  /* ── DISTANCE LIST ── */
+  .dist-list { background: var(--creme); border-radius: 10px; overflow: hidden; }
+  .dist-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 20px; border-bottom: 1px solid var(--creme-dark);
+    font-size: 15px;
+  }
+  .dist-item:last-child { border-bottom: none; }
+  .dist-time { font-weight: 700; color: var(--vert); font-size: 14px; }
+
+  /* ── MEAL CARDS ── */
+  .meal-card {
+    background: var(--creme); border-radius: 10px;
+    padding: 20px 22px; margin-bottom: 12px;
+    border-left: 4px solid var(--ocre);
+  }
+  .meal-card.vert  { border-left-color: var(--vert); }
+  .meal-card.terra { border-left-color: var(--terra); }
+  .meal-card.light { border-left-color: var(--ocre-light); }
+
+  .meal-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+  .meal-title { font-family: Georgia, serif; font-size: 18px; font-weight: 600; color: var(--brun); }
+  .meal-badge {
+    background: var(--ocre); color: white;
+    font-size: 11px; font-weight: 700;
+    padding: 3px 8px; border-radius: 4px;
+  }
+  .meal-badge.vert  { background: var(--vert); }
+  .meal-badge.terra { background: var(--terra); }
+  .meal-desc { font-size: 14px; color: var(--brun-mid); line-height: 1.6; }
+
+  .meal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 10px; }
+  .meal-grid-item { font-size: 14px; color: var(--brun-mid); padding: 2px 0; }
+
+  /* ── FAIZA BOX ── */
+  .faiza-box {
+    background: var(--creme); border-radius: 10px;
+    padding: 24px; margin-bottom: 28px;
+    border-left: 4px solid var(--ocre); border-right: 4px solid var(--ocre);
+    text-align: center;
+  }
+  .faiza-quote { font-family: Georgia, serif; font-style: italic; font-size: 16px; color: var(--brun-mid); line-height: 1.8; }
+  .faiza-highlight { color: var(--ocre); font-style: normal; font-weight: 700; font-size: 15px; display: block; margin-top: 10px; }
+
+  /* ── MENU ACCORDION ── */
+  .menu-section { margin-bottom: 4px; }
+  .menu-toggle {
+    width: 100%; background: var(--creme); border: none; cursor: pointer;
+    padding: 16px 20px; display: flex; justify-content: space-between; align-items: center;
+    border-radius: 8px; font-family: Georgia, serif;
+    font-size: 17px; font-weight: 600; color: var(--terra);
+    transition: background 0.2s;
+  }
+  .menu-toggle:hover { background: var(--creme-dark); }
+  .menu-toggle .arrow { font-size: 12px; color: var(--ocre); transition: transform 0.3s; }
+  .menu-toggle.open .arrow { transform: rotate(180deg); }
+  .menu-items {
+    display: none; background: var(--creme);
+    border-radius: 0 0 8px 8px; padding: 4px 20px 16px;
+    margin-top: -4px;
+  }
+  .menu-items.open { display: block; }
+  .menu-item {
+    font-size: 14.5px; color: var(--brun-mid);
+    padding: 8px 0; border-bottom: 1px dotted var(--creme-dark);
+  }
+  .menu-item:last-child { border-bottom: none; }
+
+  /* ── ACTIVITY CARDS ── */
+  .act-card {
+    background: var(--creme); border-radius: 10px;
+    padding: 20px 22px; margin-bottom: 12px;
+    border-top: 3px solid var(--ocre);
+  }
+  .act-card.vert  { border-top-color: var(--vert); }
+  .act-card.terra { border-top-color: var(--terra); }
+  .act-card.brun  { border-top-color: var(--brun-mid); }
+
+  .act-title { font-family: Georgia, serif; font-size: 17px; font-weight: 600; color: var(--brun); margin-bottom: 6px; }
+  .act-desc  { font-size: 14px; color: var(--brun-mid); line-height: 1.6; margin-bottom: 8px; }
+  .act-contact { font-size: 13px; color: var(--vert); font-weight: 600; }
+  .act-link { color: var(--vert); text-decoration: none; }
+  .act-link:hover { text-decoration: underline; }
+
+  /* ── AGAFAY FEATURE ── */
+  .agafay-box {
+    background: linear-gradient(135deg, var(--brun) 0%, #1e1208 100%);
+    border-radius: 14px; padding: 28px 24px; color: var(--creme);
+    margin-top: 16px;
+  }
+  .agafay-title { font-family: Georgia, serif; font-size: 22px; color: var(--ocre-light); margin-bottom: 10px; }
+  .agafay-desc  { font-size: 15px; color: var(--sable); line-height: 1.7; margin-bottom: 18px; }
+  .agafay-prices { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .agafay-price {
+    background: rgba(200,133,58,0.18); border: 1px solid rgba(200,133,58,0.35);
+    border-radius: 6px; padding: 8px 14px;
+    font-size: 14px; color: var(--ocre-light);
+  }
+  .agafay-price strong { color: white; }
+  .agafay-contact { font-size: 13px; color: var(--sable); opacity: 0.65; }
+
+  /* ── SPA CARDS ── */
+  .spa-card {
+    background: var(--creme); border-radius: 10px;
+    padding: 20px 22px; margin-bottom: 12px;
+    border-right: 4px solid var(--vert);
+  }
+  .spa-header { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+  .spa-name { font-family: Georgia, serif; font-size: 19px; font-weight: 600; color: var(--vert); }
+  .spa-stars { color: var(--ocre); font-size: 13px; }
+  .spa-badge {
+    background: var(--vert); color: white;
+    font-size: 11px; padding: 2px 7px; border-radius: 3px;
+  }
+  .spa-desc  { font-size: 14px; color: var(--brun-mid); line-height: 1.6; margin: 8px 0; }
+  .spa-price { font-size: 14px; font-weight: 700; color: var(--terra); }
+  .spa-addr  { font-size: 13px; color: var(--brun-mid); margin-top: 6px; }
+
+  /* ── RESTO CARDS ── */
+  .resto-cat {
+    display: inline-block; background: var(--brun);
+    color: var(--ocre-light); font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 4px;
+    margin: 20px 0 12px;
+  }
+  .resto-card {
+    background: var(--creme); border-radius: 10px;
+    padding: 18px 20px; margin-bottom: 10px;
+    border-top: 3px solid var(--ocre);
+  }
+  .resto-card.vert  { border-top-color: var(--vert); }
+  .resto-card.terra { border-top-color: var(--terra); }
+  .resto-card.brun  { border-top-color: var(--brun-mid); }
+
+  .resto-header { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
+  .resto-name { font-family: Georgia, serif; font-size: 17px; font-weight: 600; color: var(--brun); }
+  .resto-badge {
+    background: var(--ocre); color: white;
+    font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 3px;
+  }
+  .resto-badge.vert  { background: var(--vert); }
+  .resto-badge.terra { background: var(--terra); }
+  .resto-badge.brun  { background: var(--brun-mid); }
+  .resto-loc  { font-size: 12px; color: var(--ocre); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .resto-desc { font-size: 14px; color: var(--brun-mid); line-height: 1.5; }
+  .resto-note { font-size: 13px; color: var(--terra); font-style: italic; margin-top: 5px; }
+
+  /* ── CAFE GRID ── */
+  .cafe-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 500px) { .cafe-grid { grid-template-columns: 1fr; } }
+  .cafe-card {
+    background: var(--creme); border-radius: 8px;
+    padding: 16px 18px; display: flex; gap: 12px; align-items: flex-start;
+  }
+  .cafe-num {
+    width: 30px; height: 30px; flex-shrink: 0; border-radius: 50%;
+    background: var(--ocre-light); color: var(--brun);
+    display: flex; align-items: center; justify-content: center;
+    font-family: Georgia, serif; font-size: 14px; font-weight: 600;
+  }
+  .cafe-name { font-size: 15px; font-weight: 600; color: var(--brun); margin-bottom: 3px; }
+  .cafe-url  { font-size: 13px; color: var(--vert); }
+  .cafe-desc { font-size: 13px; color: var(--brun-mid); }
+
+  /* ── NIGHT BOX ── */
+  .night-box {
+    background: var(--brun); border-radius: 12px;
+    padding: 24px; margin-top: 20px;
+  }
+  .night-title { font-family: Georgia, serif; font-size: 18px; color: var(--ocre-light); margin-bottom: 14px; }
+  .night-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .night-item strong { font-size: 15px; color: var(--creme); display: block; }
+  .night-item span   { font-size: 13px; color: var(--sable); opacity: 0.75; }
+
+  /* ── RULES ── */
+  .rule-item {
+    font-size: 14.5px; color: var(--brun-mid);
+    padding: 10px 0 10px 14px;
+    border-left: 3px solid var(--ocre-light);
+    margin-bottom: 8px; line-height: 1.55;
+  }
+
+  /* ── GOLF TABLE ── */
+  .golf-list { background: var(--creme); border-radius: 10px; overflow: hidden; }
+  .golf-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 20px; border-bottom: 1px solid var(--creme-dark); gap: 12px;
+  }
+  .golf-item:last-child { border-bottom: none; }
+  .golf-name { font-size: 15px; font-weight: 600; color: var(--brun); }
+  .golf-url  { font-size: 13px; color: var(--vert); }
+  .golf-time { font-size: 14px; font-weight: 700; color: var(--vert); white-space: nowrap; }
+
+  /* ── MAP BUTTON ── */
+  .map-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--vert); color: white;
+    border-radius: 8px; padding: 12px 20px;
+    font-size: 15px; font-weight: 600;
+    text-decoration: none; margin-top: 14px;
+    transition: background 0.2s;
+  }
+  .map-btn:hover { background: var(--vert-light); }
+
+  /* ── INSTAGRAM LINK ── */
+  .insta-band {
+    background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+    padding: 28px 24px; text-align: center;
+    color: white;
+  }
+  .insta-band h3 { font-family: Georgia, serif; font-size: 20px; margin-bottom: 6px; }
+  .insta-band p  { font-size: 14px; opacity: 0.85; margin-bottom: 16px; }
+  .insta-btn {
+    display: inline-block; background: white; color: #833ab4;
+    border-radius: 8px; padding: 10px 24px;
+    font-size: 15px; font-weight: 700; text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .insta-btn:hover { opacity: 0.9; }
+
+  /* ── BACK TO TOP ── */
+  .back-top {
+    text-align: center; padding: 20px;
+    background: var(--creme-dark);
+  }
+  .back-top a {
+    font-size: 13px; color: var(--brun-mid);
+    text-decoration: none; letter-spacing: 1px;
+    text-transform: uppercase; font-weight: 600;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--brun); padding: 40px 24px;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: Georgia, serif; font-size: 24px;
+    font-weight: 300; color: var(--creme); margin-bottom: 6px;
+  }
+  .footer-logo span { color: var(--ocre-light); }
+  .footer-sub { font-size: 13px; color: var(--sable); opacity: 0.55; margin-bottom: 20px; }
+  .footer-contacts { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .footer-contact-name { font-family: Georgia, serif; font-size: 16px; color: var(--ocre-light); margin-bottom: 3px; }
+  .footer-contact-tel  { font-size: 14px; color: var(--sable); opacity: 0.7; }
+
+  /* ── UTIL ── */
+  .mt8  { margin-top: 8px; }
+  .mt16 { margin-top: 16px; }
+  .mt24 { margin-top: 24px; }
+  .mb8  { margin-bottom: 8px; }
+  .highlight { background: var(--ocre); color: white; border-radius: 6px; padding: 12px 18px; font-size: 14px; margin-top: 14px; }
+  .highlight.vert  { background: var(--vert); }
+  .highlight.terra { background: var(--terra); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
+    section { padding: 48px 18px; }
+    .wifi-box { flex-direction: column; gap: 12px; }
+    .wifi-sep { width: 100%; height: 1px; }
+    .night-grid { grid-template-columns: 1fr; }
+    .cards-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-brand">Villa Dar J</div>
+  <div class="nav-links">
+    <a class="nav-link" href="#infos">Infos</a>
+    <a class="nav-link" href="#repas">Repas</a>
+    <a class="nav-link" href="#villa">La Villa</a>
+    <a class="nav-link" href="#marrakech">Marrakech</a>
+    <a class="nav-link" href="#activites">Activités</a>
+    <a class="nav-link" href="#spa">Spa</a>
+    <a class="nav-link" href="#restos">Restos</a>
+    <a class="nav-link" href="#cafes">Cafés</a>
+  </div>
+</nav>
+
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Marrakech · Douar Sabba</div>
+    <svg class="hero-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="#C8853A" stroke-width="1.2">
+        <polygon points="50,6 59,34 88,34 65,52 74,80 50,62 26,80 35,52 12,34 41,34" opacity="0.8"/>
+        <polygon points="50,18 57,38 76,38 62,48 67,67 50,56 33,67 38,48 24,38 43,38" opacity="0.45"/>
+        <circle cx="50" cy="50" r="30" stroke-width="0.7" opacity="0.3"/>
+      </g>
+      <g fill="#C8853A" opacity="0.7">
+        <circle cx="50" cy="6" r="2.5"/><circle cx="88" cy="34" r="2.5"/>
+        <circle cx="74" cy="80" r="2.5"/><circle cx="26" cy="80" r="2.5"/>
+        <circle cx="12" cy="34" r="2.5"/>
+      </g>
+    </svg>
+    <div class="hero-title">Villa<br><span>Dar J</span></div>
+    <div class="hero-subtitle">Guide des invités</div>
+    <div class="hero-divider"></div>
+    <div class="hero-tagline">500 m² · 1 hectare de parc · Personnel dédié</div>
+  </div>
+  <div class="scroll-hint">Découvrir</div>
+</div>
+
+
+<!-- ── WELCOME ── -->
+<div class="welcome-band">
+  <div class="welcome-inner">
+    <div class="welcome-guest-name">BIENVENUE</div>
+    <div class="welcome-quote">
+      "Je suis ravi de vous accueillir à la Villa Dar J. Ce guide contient toutes les informations nécessaires pour profiter pleinement de votre séjour. N'hésitez pas à solliciter Said ou Faiza pour tout ce dont vous avez besoin — ils sont là pour vous."
+    </div>
+    <div class="welcome-name">— Jérémie</div>
+  </div>
+</div>
+
+
+<!-- ── 1. INFOS PRATIQUES ── -->
+<section id="infos">
+  <div class="section-label">Section 1</div>
+  <div class="section-title">Informations pratiques</div>
+  <div class="section-divider"></div>
+
+  <!-- WiFi -->
+  <div class="wifi-box">
+    <div>
+      <div class="wifi-item-label">Réseau Wi-Fi</div>
+      <div class="wifi-item-value">WIFI Villa DarJ</div>
+    </div>
+    <div class="wifi-sep"></div>
+    <div>
+      <div class="wifi-item-label">Mot de passe</div>
+      <div class="wifi-item-value">francoise</div>
+    </div>
+  </div>
+
+  <!-- Contacts -->
+  <div class="mb8" style="font-family: Georgia, serif; font-size: 20px; font-weight:300; color: var(--brun-mid); margin-bottom: 14px;">Contacts</div>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-name">Said Tounnout</div>
+      <div class="contact-tel">+212 (0)6 12 22 32 36</div>
+      <div class="contact-sub">WhatsApp · SMS · 7j/7</div>
+      <a class="contact-btn" href="https://wa.me/212612223236">Ouvrir WhatsApp</a>
+    </div>
+    <div class="contact-card">
+      <div class="contact-name">Faiza</div>
+      <div class="contact-tel">+212 (0)6 68 67 36 63</div>
+      <div class="contact-sub">WhatsApp · SMS · 7j/7</div>
+      <a class="contact-btn" href="https://wa.me/212668673663">Ouvrir WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- Localisation -->
+  <div style="font-family: Georgia, serif; font-size: 20px; font-weight:300; color: var(--brun-mid); margin: 28px 0 14px;">Localisation</div>
+  <div class="card" style="margin-bottom: 14px;">
+    <div class="card-body">
+      Douar Sabba, H'mdia Alouidane — 40000 Marrakech<br>
+      10 km du centre-ville · Route de Ouarzazate<br>
+      1 km à vol d'oiseau de l'hôtel Oberoi
+    </div>
+    <a class="map-btn" href="https://maps.app.goo.gl/VeXdA5fkgfoW1yi6A" target="_blank">
+      Voir sur Google Maps
+    </a>
+  </div>
+
+  <!-- Distances -->
+  <div class="dist-list mt16">
+    <div class="dist-item"><span>Golfs Amelkis &amp; Royal</span><span class="dist-time">15–20 min</span></div>
+    <div class="dist-item"><span>Mandarin Oriental</span><span class="dist-time">15 min</span></div>
+    <div class="dist-item"><span>Jardin Majorelle &amp; Musée YSL</span><span class="dist-time">20–25 min</span></div>
+    <div class="dist-item"><span>Place Jemaa el-Fna</span><span class="dist-time">25 min</span></div>
+    <div class="dist-item"><span>Zoo La Perle aux Oiseaux</span><span class="dist-time">5 min à pied</span></div>
+  </div>
+
+  <!-- Check-in/out -->
+  <div class="cards-grid mt24">
+    <div class="card vert">
+      <div style="font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color: var(--vert); margin-bottom:6px;">Check-in</div>
+      <div style="font-size:20px; font-weight:700; color: var(--brun);">14h00</div>
+    </div>
+    <div class="card terra">
+      <div style="font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color: var(--terra); margin-bottom:6px;">Check-out</div>
+      <div style="font-size:20px; font-weight:700; color: var(--brun);">12h00</div>
+    </div>
+  </div>
+
+  <!-- Règles -->
+  <div style="font-family: Georgia, serif; font-size: 20px; font-weight:300; color: var(--brun-mid); margin: 28px 0 14px;">Règles de la maison</div>
+  <div class="rule-item">Âge minimum pour réserver : 25 ans</div>
+  <div class="rule-item">Pas de fêtes ni d'événements — heures calmes de 23h à 7h</div>
+  <div class="rule-item">Interdiction de fumer à l'intérieur</div>
+  <div class="rule-item">Pas d'invités non enregistrés sans accord préalable</div>
+  <div class="rule-item">Conformément à la loi marocaine, les couples non mariés marocains ne peuvent pas séjourner ensemble</div>
+
+  <!-- Confort -->
+  <div style="font-family: Georgia, serif; font-size: 20px; font-weight:300; color: var(--brun-mid); margin: 28px 0 14px;">Services &amp; confort</div>
+  <div class="cards-grid">
+    <div class="card vert">
+      <div class="card-title">Climatisation &amp; chauffage</div>
+      <div class="card-body">Toutes les chambres sont équipées. Couvertures supplémentaires sur demande.</div>
+    </div>
+    <div class="card vert">
+      <div class="card-title">Famille avec enfants</div>
+      <div class="card-body">Lit bébé et chaise haute disponibles sur simple demande.</div>
+    </div>
+    <div class="card ocre">
+      <div class="card-title">Ménage quotidien</div>
+      <div class="card-body">Effectué chaque jour. Dites vos préférences au personnel à tout moment.</div>
+    </div>
+    <div class="card ocre">
+      <div class="card-title">Linge de maison</div>
+      <div class="card-body">Serviettes, draps, linge de piscine fournis. Renouvellement tous les 3 jours.</div>
+    </div>
+    <div class="card terra">
+      <div class="card-title">Sécurité</div>
+      <div class="card-body">Said et Faiza dorment sur place. Caméras de sécurité extérieures.</div>
+    </div>
+    <div class="card terra">
+      <div class="card-title">Transfert aéroport</div>
+      <div class="card-body">Organisable sur demande via Said ou Faiza.</div>
+    </div>
+  </div>
+
+  <!-- Personnel -->
+  <div class="highlight mt24">
+    <strong>Horaires du personnel :</strong> 08h00 – 22h00 chaque jour, avec pauses 15h–17h et une heure dans la journée. Notre équipe parle français et est disponible 7j/7.
+  </div>
+
+  <!-- Golfs -->
+  <div style="font-family: Georgia, serif; font-size: 20px; font-weight:300; color: var(--brun-mid); margin: 28px 0 14px;">Golfs à proximité</div>
+  <div class="golf-list">
+    <div class="golf-item">
+      <div><div class="golf-name">Golf Amelkis</div><a class="golf-url" href="https://www.golfamelkis.com" target="_blank">golfamelkis.com</a></div>
+      <div class="golf-time">15 min</div>
+    </div>
+    <div class="golf-item">
+      <div><div class="golf-name">Golf Royal</div><a class="golf-url" href="https://royal-golf-marrakech.com" target="_blank">royal-golf-marrakech.com</a></div>
+      <div class="golf-time">15–20 min</div>
+    </div>
+    <div class="golf-item">
+      <div><div class="golf-name">Golf Al Maaden</div><a class="golf-url" href="https://www.almaadengolfresort.com" target="_blank">almaadengolfresort.com</a></div>
+      <div class="golf-time">20–25 min</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── 2. RESTAURATION ── -->
+<section id="repas" style="background: var(--creme); max-width:100%; padding: 60px 0;">
+  <div style="max-width: 720px; margin: 0 auto; padding: 0 24px;">
+  <div class="section-label">Section 2</div>
+  <div class="section-title">Restauration &amp; menus</div>
+  <div class="section-divider"></div>
+
+  <div class="meal-card vert">
+    <div class="meal-header">
+      <div class="meal-title">Petit-déjeuner</div>
+      <div class="meal-badge vert">INCLUS</div>
+    </div>
+    <div class="meal-desc">Préparé chaque matin par notre cheffe Faiza · Service entre 8h00 et 10h00<br>(merci d'indiquer l'heure souhaitée la veille)</div>
+    <div class="meal-grid">
+      <div class="meal-grid-item">Msemen ou batbout maison</div>
+      <div class="meal-grid-item">2 oeufs par personne</div>
+      <div class="meal-grid-item">Jus d'orange frais pressé</div>
+      <div class="meal-grid-item">Thé &amp; café à volonté</div>
+      <div class="meal-grid-item">Pain frais, beurre, confiture, miel</div>
+    </div>
+  </div>
+
+  <div class="meal-card light">
+    <div class="meal-header">
+      <div class="meal-title">Option Brunch</div>
+      <div class="meal-badge">300 MAD / groupe</div>
+    </div>
+    <div class="meal-desc">Remplace le petit-déjeuner · À partir de 10h30 sur demande · Hors coût des courses (viennoiseries, fruits, fromage, charcuterie…)</div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="meal-card vert" style="margin-bottom:0;">
+      <div class="meal-header">
+        <div class="meal-title">Déjeuner</div>
+        <div class="meal-badge vert">300 MAD</div>
+      </div>
+      <div class="meal-desc">Service 12h30 – 14h30<br>Par repas pour le groupe entier<br><em style="color:var(--ocre);">Hors coût des courses</em></div>
+    </div>
+    <div class="meal-card terra" style="margin-bottom:0;">
+      <div class="meal-header">
+        <div class="meal-title">Dîner</div>
+        <div class="meal-badge terra">400 MAD</div>
+      </div>
+      <div class="meal-desc">Service 19h30 – 21h30<br>Par repas pour le groupe entier<br><em style="color:var(--ocre);">Hors coût des courses</em></div>
+    </div>
+  </div>
+
+  <div class="card mt16" style="background: white;">
+    <div class="card-body">
+      <strong>Courses alimentaires :</strong> Notre équipe peut faire vos courses — <strong>300 MAD par session</strong> + montant des tickets.<br>
+      <strong>Cooking class :</strong> Sur demande, Faiza organise un cours de cuisine marocaine !
+    </div>
+  </div>
+
+  <div class="highlight terra mt16">
+    <strong>Important :</strong> Merci de communiquer vos choix de repas au moins 2 jours à l'avance et de signaler toute restriction alimentaire dès que possible.
+  </div>
+
+  <!-- MENU FAIZA -->
+  <div style="margin-top: 36px;">
+    <div class="faiza-box">
+      <div class="faiza-quote">
+        Faiza a été formée dans les grands hôtels 5 étoiles de Marrakech, avant d'être initiée aux recettes de la maison par Françoise — la mère de Jérémie.
+        <span class="faiza-highlight">C'est cette rencontre entre exigence professionnelle et cuisine de famille qui fait toute la différence dans son assiette.</span>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <button class="menu-toggle" onclick="toggleMenu(this)">
+        Entrées <span class="arrow">▼</span>
+      </button>
+      <div class="menu-items">
+        <div class="menu-item">Salade marocaine</div>
+        <div class="menu-item">Salade méchouia</div>
+        <div class="menu-item">Briouates au fromage</div>
+        <div class="menu-item">Harira (soupe traditionnelle)</div>
+        <div class="menu-item">Salade betteraves &amp; carottes</div>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <button class="menu-toggle" onclick="toggleMenu(this)">
+        Plats marocains <span class="arrow">▼</span>
+      </button>
+      <div class="menu-items">
+        <div class="menu-item">Tajine poulet, olives &amp; citrons confits</div>
+        <div class="menu-item">Tajine agneau, pruneaux &amp; amandes</div>
+        <div class="menu-item">Tajine poisson à la charmoula</div>
+        <div class="menu-item">Tajine kefta à la sauce tomate</div>
+        <div class="menu-item">Tajine de légumes de saison</div>
+        <div class="menu-item">Couscous royal</div>
+        <div class="menu-item">Pastilla poulet &amp; amandes</div>
+        <div class="menu-item">Poulet Madfoun (sucré-salé, 5 épices)</div>
+        <div class="menu-item">Gigot d'agneau rôti &amp; pommes de terre sautées</div>
+        <div class="menu-item">Chawarma à la marocaine</div>
+        <div class="menu-item">Brochettes poulet &amp; gratin de courgettes</div>
+        <div class="menu-item">Briouates assortis (3 sortes)</div>
+        <div class="menu-item">Lotte au safran</div>
+        <div class="menu-item">Poulet farci aux fruits secs</div>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <button class="menu-toggle" onclick="toggleMenu(this)">
+        Cuisine française <span class="arrow">▼</span>
+      </button>
+      <div class="menu-items">
+        <div class="menu-item">Pizza maison</div>
+        <div class="menu-item">Pâtes variées</div>
+        <div class="menu-item">Omelette aux champignons</div>
+        <div class="menu-item">Gratin de légumes</div>
+        <div class="menu-item">Riz aux herbes &amp; épices</div>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <button class="menu-toggle" onclick="toggleMenu(this)">
+        Desserts <span class="arrow">▼</span>
+      </button>
+      <div class="menu-items">
+        <div class="menu-item">Msemen au miel</div>
+        <div class="menu-item">Salade d'oranges à la cannelle</div>
+        <div class="menu-item">Cornes de gazelle</div>
+        <div class="menu-item">Baklava</div>
+        <div class="menu-item">Pastilla au lait</div>
+        <div class="menu-item">Tarte Tatin</div>
+        <div class="menu-item">Crème brûlée à la vanille</div>
+        <div class="menu-item">Choux ou éclairs maison</div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+
+<!-- ── 3. LA VILLA ── -->
+<section id="villa">
+  <div class="section-label">Section 3</div>
+  <div class="section-title">Équipements de la villa</div>
+  <div class="section-divider"></div>
+  <div class="cards-grid">
+    <div class="card ocre">
+      <div class="card-title">Piscine privée</div>
+      <div class="card-body">Non chauffée, très agréable en journée ensoleillée. Transats et meubles de jardin à disposition.</div>
+    </div>
+    <div class="card vert">
+      <div class="card-title">Fitness &amp; yoga</div>
+      <div class="card-body">Tapis de yoga, poids 5 &amp; 10 kg, vélo d'appartement. Cours de yoga à domicile organisables.</div>
+    </div>
+    <div class="card terra">
+      <div class="card-title">Jeux &amp; bibliothèque</div>
+      <div class="card-body">Jeux de société, cartes, livres. Parfaits pour les soirées en famille ou entre amis.</div>
+    </div>
+    <div class="card brun">
+      <div class="card-title">Jardin &amp; enfants</div>
+      <div class="card-body">Trampoline, balançoires, 1 hectare de parc arboré pour se défouler en liberté.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── INSTAGRAM ── -->
+<div class="insta-band">
+  <h3>Découvrez la villa en photos</h3>
+  <p>Retrouvez les plus belles photos de la Villa Dar J sur Instagram</p>
+  <a class="insta-btn" href="https://www.instagram.com/darjermarrakech/" target="_blank">@darjermarrakech</a>
+</div>
+
+
+<!-- ── 4. MARRAKECH ── -->
+<section id="marrakech" style="background: var(--creme); max-width:100%; padding: 60px 0;">
+  <div style="max-width: 720px; margin: 0 auto; padding: 0 24px;">
+  <div class="section-label">Section 4</div>
+  <div class="section-title">Découvrir Marrakech</div>
+  <div class="section-divider"></div>
+
+  <div style="font-family: Georgia, serif; font-size: 18px; font-weight:300; color: var(--brun-mid); margin-bottom: 14px;">La Médina</div>
+  <div class="dist-list">
+    <div class="dist-item"><span><strong>Palais de la Bahia</strong></span><span style="font-size:13px; color:var(--brun-mid);">XIXe s., jardins islamiques</span></div>
+    <div class="dist-item"><span><strong>Palais El Badi</strong></span><span style="font-size:13px; color:var(--brun-mid);">XVIe s., vue panoramique</span></div>
+    <div class="dist-item"><span><strong>Medersa Ben Youssef</strong></span><span style="font-size:13px; color:var(--brun-mid);">chef-d'œuvre islamique</span></div>
+    <div class="dist-item"><span><strong>Musée de Marrakech</strong></span><span style="font-size:13px; color:var(--brun-mid);">art marocain</span></div>
+    <div class="dist-item"><span><strong>Tombeaux Saadiens</strong></span><span style="font-size:13px; color:var(--brun-mid);">stuc &amp; marbre</span></div>
+    <div class="dist-item"><span><strong>Maison de la Photographie</strong></span><span style="font-size:13px; color:var(--brun-mid);">Maroc ancien</span></div>
+    <div class="dist-item"><span><strong>Place Jemaa el-Fna</strong></span><span style="font-size:13px; color:var(--brun-mid);">le cœur de Marrakech</span></div>
+    <div class="dist-item"><span><strong>Blaoui</strong></span><span style="font-size:13px; color:var(--brun-mid);">céramiques &amp; textiles</span></div>
+    <div class="dist-item"><span><strong>Soufiane Zarib</strong></span><span style="font-size:13px; color:var(--brun-mid);">tapis berbères faits main</span></div>
+  </div>
+
+  <div style="margin-top: 28px; background: var(--vert); border-radius: 12px; padding: 24px;">
+    <div style="font-family: Georgia, serif; font-size: 20px; font-weight:600; color: white; margin-bottom: 8px;">Jardin Majorelle &amp; Musée YSL</div>
+    <div style="font-size: 15px; color: rgba(255,255,255,0.85); line-height:1.65; margin-bottom: 14px;">À 20–25 min en voiture de la villa. Incontournable — réservation en ligne recommandée.</div>
+    <a style="display:inline-block; background:white; color: var(--vert); border-radius:7px; padding:10px 18px; font-size:14px; font-weight:700; text-decoration:none;" href="https://tickets.jardinmajorelle.com/Visite" target="_blank">Réserver en ligne</a>
+  </div>
+
+  <div class="card mt16" style="background: white;">
+    <div class="card-title">Parking Médina</div>
+    <div class="card-body">Demandez à Said pour l'adresse recommandée — sécurisé et pratique pour explorer la vieille ville à pied.</div>
+  </div>
+  </div>
+</section>
+
+
+<!-- ── 5. ACTIVITÉS ── -->
+<section id="activites">
+  <div class="section-label">Section 5</div>
+  <div class="section-title">Activités &amp; aventure</div>
+  <div class="section-divider"></div>
+
+  <div class="act-card ocre">
+    <div class="act-title">Zoo La Perle aux Oiseaux</div>
+    <div class="act-desc">À 5 min à pied de la villa. Oiseaux exotiques, spectacles de perroquets, mini-ferme. Café-restaurant sur place. Comptez 2–3 heures.</div>
+    <div class="act-contact">9h–18h · <a class="act-link" href="https://laperleauxoiseaux.com" target="_blank">laperleauxoiseaux.com</a> · +212 6 61 63 35 11</div>
+  </div>
+
+  <div class="act-card vert">
+    <div class="act-title">Parc Aquatique Oasiria</div>
+    <div class="act-desc">Idéal en famille — piscines, toboggans, espaces verts. Parfait pour une journée de détente complète.</div>
+    <div class="act-contact"><a class="act-link" href="https://oasiria.com" target="_blank">oasiria.com</a> · +212 5243-80438</div>
+  </div>
+
+  <div class="act-card terra">
+    <div class="act-title">Quad &amp; Buggy — Dunes &amp; Deserts</div>
+    <div class="act-desc">Excursions guidées dans les paysages désertiques. Prise en charge possible directement à la villa.</div>
+    <div class="act-contact"><a class="act-link" href="https://dunesdeserts.com" target="_blank">dunesdeserts.com</a> · +212 5244-26462</div>
+  </div>
+
+  <div class="act-card brun">
+    <div class="act-title">Vol en Montgolfière</div>
+    <div class="act-desc">Admirez Marrakech et l'Atlas au lever du soleil depuis les airs. Une expérience inoubliable.</div>
+    <div class="act-contact"><a class="act-link" href="https://ciel-dafrique.com" target="_blank">ciel-dafrique.com</a> · +212 5244-39121</div>
+  </div>
+
+  <div class="act-card ocre">
+    <div class="act-title">Chameau &amp; Cheval en Palmeraie</div>
+    <div class="act-desc">Explorez les palmeraies de Marrakech avec des guides locaux pour une balade authentique.</div>
+    <div class="act-contact"><a class="act-link" href="https://marrakechpalmeraie.com" target="_blank">marrakechpalmeraie.com</a> · +212 5243-68933</div>
+  </div>
+
+  <div class="agafay-box">
+    <div class="agafay-title">Désert d'Agafay — Notre coup de cœur</div>
+    <div class="agafay-desc">À seulement 40 minutes de la villa, un paysage lunaire de pierres et d'ocre spectaculaire. Notre recommandation absolue : <strong style="color:white;">BE Agafay</strong> — camp de luxe instagrammable avec piscines panoramiques, jacuzzi et cuisine excellente. Places limitées, réservation indispensable.</div>
+    <div class="agafay-prices">
+      <div class="agafay-price"><strong>Day Pass</strong> · Déjeuner + piscine · 60 EUR/pers</div>
+      <div class="agafay-price"><strong>Sunset Pass</strong> · Dîner + spectacle · 80 EUR/pers</div>
+      <div class="agafay-price">Transfert depuis Marrakech disponible</div>
+    </div>
+    <div class="agafay-contact">WhatsApp +33 6 15 24 82 92 · <a style="color:var(--ocre-light);" href="https://be-agafay.com" target="_blank">be-agafay.com</a></div>
+  </div>
+</section>
+
+
+<!-- ── 6. SPA ── -->
+<section id="spa" style="background: var(--creme); max-width:100%; padding: 60px 0;">
+  <div style="max-width: 720px; margin: 0 auto; padding: 0 24px;">
+  <div class="section-label">Section 6</div>
+  <div class="section-title">Spa &amp; bien-être</div>
+  <div class="section-divider"></div>
+
+  <div style="font-family: Georgia, serif; font-style: italic; font-size: 16px; color: var(--brun-mid); text-align: center; margin-bottom: 28px; line-height: 1.75;">
+    Le hammam est l'une des expériences incontournables de Marrakech.<br>
+    Voici nos trois adresses recommandées, adaptées à une clientèle internationale.
+  </div>
+
+  <div class="spa-card">
+    <div class="spa-header">
+      <div class="spa-name">Les Bains d'Orient</div>
+      <div class="spa-stars">★★★★★</div>
+      <span class="spa-badge">Meilleure note Marrakech</span>
+    </div>
+    <div class="spa-desc">Cadre somptueux inspiré des bains orientaux. Hammam traditionnel, gommage au savon noir, masque ghassoul et soin à l'huile d'argan. 913 avis Google, note 4.6/5.</div>
+    <div class="spa-price">À partir de 400 MAD (~36€) · Formules jusqu'à 790 MAD (~70€)</div>
+    <div class="spa-addr">214 rue Arset Aouzal · <a class="act-link" href="https://www.les-bains-dorient.com" target="_blank">les-bains-dorient.com</a></div>
+  </div>
+
+  <div class="spa-card">
+    <div class="spa-header">
+      <div class="spa-name">Les Bains de Marrakech</div>
+      <div class="spa-stars">★★★★</div>
+      <span class="spa-badge">Travelers' Choice 2024</span>
+    </div>
+    <div class="spa-desc">Institution depuis 2002, entièrement rénové en 2021. Hammam, gommage, massages variés, bains aux sels, soins du visage. Piscine sur place. Jardin intérieur.</div>
+    <div class="spa-price">Hammam dès 150 MAD (~13€) · Duo hammam + massage 550–800 MAD · Day Spa jusqu'à 1050 MAD</div>
+    <div class="spa-addr">2 Derb Sedra, Kasbah · <a class="act-link" href="https://lesbainsdemarrakech.com" target="_blank">lesbainsdemarrakech.com</a></div>
+  </div>
+
+  <div class="spa-card">
+    <div class="spa-header">
+      <div class="spa-name">Hammam de la Rose</div>
+      <div class="spa-stars">★★★★</div>
+    </div>
+    <div class="spa-desc">Architecture ottomane, produits 100% bio du terroir marocain (argan, fleur d'oranger, cannelle). Personnel habitué aux touristes. En face du Palais Dar el Bacha.</div>
+    <div class="spa-price">À partir de 250 MAD (~22€) · Ouvert tous les jours 10h–20h</div>
+  </div>
+
+  <div style="background: var(--vert); border-radius: 12px; padding: 24px; margin-top: 8px;">
+    <div style="font-family: Georgia, serif; font-size: 19px; color: var(--creme); margin-bottom: 10px;">Services à domicile à la villa</div>
+    <div style="font-size: 15px; color: rgba(255,255,255,0.88); line-height: 1.7;">
+      Sur demande, nous pouvons vous mettre en contact avec des praticiens pour un <strong>massage à domicile</strong> à la villa, et des <strong>cours de yoga</strong> dans le jardin.<br>
+      <span style="opacity:0.7; font-style:italic;">Contactez Said ou Faiza pour organiser.</span>
+    </div>
+  </div>
+  </div>
+</section>
+
+
+<!-- ── 7. RESTAURANTS ── -->
+<section id="restos">
+  <div class="section-label">Section 7</div>
+  <div class="section-title">Restaurants &amp; sorties</div>
+  <div class="section-divider"></div>
+
+  <div class="card" style="font-style:italic; margin-bottom:8px;">
+    <div class="card-body">Marrakech connaît une scène gastronomique en pleine ébullition en 2026. Réservez à l'avance — les meilleures tables peuvent être complètes plusieurs semaines ahead, surtout pour les dîners au coucher du soleil.</div>
+  </div>
+
+  <div class="resto-cat">Nouvelle Cuisine Marocaine</div>
+  <div class="resto-card">
+    <div class="resto-header"><div class="resto-name">Nomad</div></div>
+    <div class="resto-loc">Médina · Place des Épices</div>
+    <div class="resto-desc">Rooftop exceptionnel avec vue sur l'Atlas. Cuisine marocaine moderne et raffinée, produits de saison.</div>
+    <div class="resto-note">Ne sert pas d'alcool · Réservation indispensable · <a class="act-link" href="https://nomadmarrakech.com" target="_blank">nomadmarrakech.com</a></div>
+  </div>
+  <div class="resto-card vert">
+    <div class="resto-header"><div class="resto-name">Plus 61 (+61)</div><span class="resto-badge vert">#31 MENA 2026</span></div>
+    <div class="resto-loc">Guéliz</div>
+    <div class="resto-desc">Bistrot d'inspiration australienne, produits frais du marché. Cocktails et vins.</div>
+  </div>
+  <div class="resto-card terra">
+    <div class="resto-header"><div class="resto-name">Le Petit Cornichon</div><span class="resto-badge terra">#21 MENA 2026</span></div>
+    <div class="resto-loc">Guéliz</div>
+    <div class="resto-desc">Bistronomie française par Erwann Lance (formé chez Rostang, Alléno, Ripert). Cave de 300+ références.</div>
+  </div>
+  <div class="resto-card">
+    <div class="resto-header"><div class="resto-name">Sahbi Sahbi</div></div>
+    <div class="resto-loc">Guéliz</div>
+    <div class="resto-desc">Équipe exclusivement féminine, cuisine marocaine fusion dans un décor Studio KO. Dîner + déjeuner le vendredi.</div>
+  </div>
+
+  <div class="resto-cat">Gastronomie de Luxe</div>
+  <div class="resto-card brun">
+    <div class="resto-header"><div class="resto-name">Le Marocain</div><span class="resto-badge brun">La Mamounia</span></div>
+    <div class="resto-loc">Hivernage</div>
+    <div class="resto-desc">Cuisine marocaine élevée : pastilla au homard, boulettes au foie gras. Le palace mythique.</div>
+  </div>
+  <div class="resto-card brun">
+    <div class="resto-header"><div class="resto-name">La Grande Table Marocaine</div><span class="resto-badge vert">Art of Hosp. 2026</span></div>
+    <div class="resto-loc">Royal Mansour</div>
+    <div class="resto-desc">Chef étoilée Hélène Darroze. Le summum de la haute gastronomie marocaine.</div>
+  </div>
+  <div class="resto-card brun">
+    <div class="resto-header"><div class="resto-name">Sesamo</div><span class="resto-badge terra">MENA 50 Best</span></div>
+    <div class="resto-loc">Royal Mansour</div>
+    <div class="resto-desc">Cuisine italienne d'exception par Massimiliano Alajmo (Le Calandre, 3 étoiles).</div>
+  </div>
+  <div class="resto-card terra">
+    <div class="resto-header"><div class="resto-name">Flowers</div><span class="resto-badge terra">Nouveauté 2026</span></div>
+    <div class="resto-loc">Médina · Dar el Bacha</div>
+    <div class="resto-desc">Chef McCormick. Rooftop, cuisine au feu de bois, inspirations méditerranéennes et nord-africaines.</div>
+  </div>
+
+  <div class="resto-cat">Jardins &amp; Oasis</div>
+  <div class="resto-card vert">
+    <div class="resto-header"><div class="resto-name">La Famille</div></div>
+    <div class="resto-loc">Médina</div>
+    <div class="resto-desc">Jardin paisible, menu végétarien court qui change chaque jour. Déjeuner et dîner.</div>
+  </div>
+  <div class="resto-card vert">
+    <div class="resto-header"><div class="resto-name">El Fenn</div></div>
+    <div class="resto-loc">Médina</div>
+    <div class="resto-desc">Rooftop idéal pour les cocktails au coucher du soleil. Cuisine méditerranéenne-marocaine.</div>
+  </div>
+  <div class="resto-card vert">
+    <div class="resto-header"><div class="resto-name">Le Jardin</div></div>
+    <div class="resto-loc">Médina · XVIe siècle</div>
+    <div class="resto-desc">Atmosphère rafraîchissante dans un bâtiment historique. Cuisine marocaine et européenne.</div>
+  </div>
+  <div class="resto-card">
+    <div class="resto-header"><div class="resto-name">L'Mida</div></div>
+    <div class="resto-loc">Médina</div>
+    <div class="resto-desc">L'un des plus hauts rooftops de la médina, vue imprenable.</div>
+    <div class="resto-note">Ne sert pas d'alcool</div>
+  </div>
+
+  <div class="resto-cat">Pépites &amp; Adresses Typiques</div>
+  <div class="resto-card">
+    <div class="resto-header"><div class="resto-name">Le Trou Au Mur</div></div>
+    <div class="resto-loc">Médina</div>
+    <div class="resto-desc">Plats marocains rares et recettes familiales oubliées. Décor chic, terrasse avec vue.</div>
+  </div>
+  <div class="resto-card">
+    <div class="resto-header"><div class="resto-name">Al Fassia</div></div>
+    <div class="resto-loc">Guéliz</div>
+    <div class="resto-desc">Institution entièrement féminine. Tajines cuits lentement comme à la maison.</div>
+  </div>
+  <div class="resto-card">
+    <div class="resto-header"><div class="resto-name">Chez Lamine</div></div>
+    <div class="resto-loc">Médina</div>
+    <div class="resto-desc">La Tanjia Marrakchia, cuite 6h sous les braises. Ouvert 12h–21h, sans réservation.</div>
+  </div>
+  <div class="resto-card">
+    <div class="resto-header"><div class="resto-name">Mechoui Alley</div></div>
+    <div class="resto-loc">Près Jemaa el-Fna</div>
+    <div class="resto-desc">Agneau rôti dans des fours souterrains. Arrivez avant midi pour le meilleur choix.</div>
+  </div>
+</section>
+
+
+<!-- ── 8. CAFÉS ── -->
+<section id="cafes" style="background: var(--creme); max-width:100%; padding: 60px 0;">
+  <div style="max-width: 720px; margin: 0 auto; padding: 0 24px;">
+  <div class="section-label">Section 8</div>
+  <div class="section-title">Cafés &amp; terrasses</div>
+  <div class="section-divider"></div>
+
+  <div class="cafe-grid">
+    <div class="cafe-card"><div class="cafe-num">1</div><div><div class="cafe-name">Café des Épices</div><a class="cafe-url" href="https://cafedesepices.net" target="_blank">cafedesepices.net</a></div></div>
+    <div class="cafe-card"><div class="cafe-num">2</div><div><div class="cafe-name">Terrasse des Épices</div><a class="cafe-url" href="https://terrassedesepices.com" target="_blank">terrassedesepices.com</a></div></div>
+    <div class="cafe-card"><div class="cafe-num">3</div><div><div class="cafe-name">Café Arabe</div><a class="cafe-url" href="https://cafearabe.com" target="_blank">cafearabe.com</a></div></div>
+    <div class="cafe-card"><div class="cafe-num">4</div><div><div class="cafe-name">Dar Cherifa</div><a class="cafe-url" href="https://darcherifa.com" target="_blank">darcherifa.com</a></div></div>
+    <div class="cafe-card"><div class="cafe-num">5</div><div><div class="cafe-name">Bacha Coffee</div><div class="cafe-desc">Musée Dar el Bacha · Café arabica d'exception</div></div></div>
+    <div class="cafe-card"><div class="cafe-num">6</div><div><div class="cafe-name">Lily Billy</div><div class="cafe-desc">Guéliz · Brunch healthy, jus, végane</div></div></div>
+  </div>
+
+  <div class="night-box mt24">
+    <div class="night-title">Sorties &amp; vie nocturne</div>
+    <div class="night-grid">
+      <div class="night-item"><strong>L'Épicurien</strong><span>Hivernage · musique live</span></div>
+      <div class="night-item"><strong>Le Comptoir Darna</strong><span>Danse orientale, ambiance festive</span></div>
+      <div class="night-item"><strong>Le Foundouk</strong><span>Médina · rooftop élégant</span></div>
+      <div class="night-item"><strong>Café de la Poste</strong><span>Guéliz · ambiance rétro-coloniale</span></div>
+    </div>
+  </div>
+  </div>
+</section>
+
+
+<!-- ── BACK TO TOP ── -->
+<div class="back-top">
+  <a href="#top">Retour en haut</a>
+</div>
+
+
+<!-- ── FOOTER ── -->
+<footer id="top">
+  <div class="footer-logo">Villa <span>Dar J</span></div>
+  <div class="footer-sub">Douar Sabba · Marrakech · @darjermarrakech</div>
+  <div class="footer-contacts">
+    <div>
+      <div class="footer-contact-name">Said Tounnout</div>
+      <div class="footer-contact-tel">+212 (0)6 12 22 32 36</div>
+    </div>
+    <div>
+      <div class="footer-contact-name">Faiza</div>
+      <div class="footer-contact-tel">+212 (0)6 68 67 36 63</div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  function toggleMenu(btn) {
+    btn.classList.toggle('open');
+    const items = btn.nextElementSibling;
+    items.classList.toggle('open');
+  }
+
+  // Highlight active nav link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 80) current = s.getAttribute('id');
+    });
+    navLinks.forEach(l => {
+      l.classList.remove('active');
+      if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
